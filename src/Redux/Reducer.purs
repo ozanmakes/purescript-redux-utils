@@ -1,4 +1,8 @@
-module Redux.Reducer where
+module Redux.Reducer
+  ( Reducer()
+  , ReduxReducer()
+  , reducer
+  ) where
 
 import Prelude (($), (<<<))
 
