@@ -18,6 +18,13 @@ newtype Action a
 (Show a) => Show (Action a)
 ```
 
+#### `Dispatcher`
+
+``` purescript
+newtype Dispatcher a
+  = Dispatcher (forall eff. Action a -> Eff (dispatch :: DISPATCH | eff) Unit)
+```
+
 #### `action`
 
 ``` purescript
