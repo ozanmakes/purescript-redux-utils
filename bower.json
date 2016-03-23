@@ -9,7 +9,6 @@
     "type": "git",
     "url": "git://github.com/osener/purescript-redux-utils.git"
   },
-  "version": "0.1.0",
   "license": "MIT",
   "moduleType": [
     "node"
