@@ -1,6 +1,7 @@
 module Redux.Action
   ( DISPATCH()
   , Action(..)
+  , Dispatcher(..)
   , action
   , asyncAction
   , dispatch
