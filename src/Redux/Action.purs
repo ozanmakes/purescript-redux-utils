@@ -8,7 +8,7 @@ module Redux.Action
   , getState
   ) where
 
-import Prelude (class Show, Unit, pure, bind, show)
+import Prelude (Unit, pure, bind)
 
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
@@ -24,8 +24,6 @@ foreign import data DISPATCH :: !
 
 newtype Action a =
   Action { "type" :: a }
-instance showAction :: (Show a) => Show (Action a) where
-  show (Action a) = show a.type
 
 newtype Dispatcher a =
   Dispatcher (forall eff. Action a -> Eff (dispatch :: DISPATCH | eff) Unit)
@@ -34,11 +32,9 @@ type State = Foreign
 
 type AsyncAction a r v = ReaderT (Tuple (Dispatcher a) (Fn0 State)) (Aff r) v
 
-foreign import withToString :: forall a. (Show a) => a -> a
-
 -- | Construct a pure Redux action.
-action :: forall a. (Show a) => a -> Action a
-action a = Action { "type": withToString a }
+action :: forall a. a -> Action a
+action a = Action { "type": a }
 
 foreign import makeAsyncAction
   :: forall a eff.
