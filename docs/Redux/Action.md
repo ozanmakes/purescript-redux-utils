@@ -13,11 +13,6 @@ newtype Action a
   = Action { type :: a }
 ```
 
-##### Instances
-``` purescript
-(Show a) => Show (Action a)
-```
-
 #### `Dispatcher`
 
 ``` purescript
@@ -28,7 +23,7 @@ newtype Dispatcher a
 #### `action`
 
 ``` purescript
-action :: forall a. (Show a) => a -> Action a
+action :: forall a. a -> Action a
 ```
 
 Construct a pure Redux action.
