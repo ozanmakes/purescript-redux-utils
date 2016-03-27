@@ -1,5 +1,7 @@
 // module Redux.Reducer
 
+var redux = require("redux")
+
 exports.applyReducer = function (reducer) {
   return function (action) {
     return function (state) {
@@ -15,3 +17,5 @@ exports.applyReducer = function (reducer) {
     }
   }
 }
+
+exports.combineReducers = redux.combineReducers

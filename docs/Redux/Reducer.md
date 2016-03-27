@@ -32,4 +32,10 @@ counter :: ReduxReducer CounterAction Int
 counter = reducer counterImpl 0
 ```
 
+#### `combineReducers`
+
+``` purescript
+combineReducers :: forall a b c. {  | a } -> ReduxReducer b c
+```
+
 

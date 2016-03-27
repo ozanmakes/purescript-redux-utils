@@ -2,6 +2,7 @@ module Redux.Reducer
   ( Reducer()
   , ReduxReducer()
   , reducer
+  , combineReducers
   ) where
 
 import Prelude (($), (<<<))
@@ -38,3 +39,5 @@ reducer f initialState =
     case (toMaybe state) of
       (Just s) -> applyReducer f action.type s
       otherwise -> initialState
+
+foreign import combineReducers :: forall a b c. Object a -> ReduxReducer b c
