@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bkonkle/purescript-redux-utils.git"
+    "url": "git://github.com/osener/purescript-redux-utils.git"
   },
   "license": "MIT",
   "moduleType": [
