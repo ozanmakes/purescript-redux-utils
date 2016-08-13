@@ -7,7 +7,7 @@ module Redux.Reducer
 
 import Prelude (($), (<<<))
 
-import Data.Function (Fn2, mkFn2)
+import Data.Function.Uncurried (Fn2, mkFn2)
 import Data.Nullable (Nullable, toMaybe)
 import Data.Maybe (Maybe(Just))
 
@@ -40,4 +40,4 @@ reducer f initialState =
       (Just s) -> applyReducer f action.type s
       otherwise -> initialState
 
-foreign import combineReducers :: forall a b c. Object a -> ReduxReducer b c
+foreign import combineReducers :: forall a b c. Record a -> ReduxReducer b c
