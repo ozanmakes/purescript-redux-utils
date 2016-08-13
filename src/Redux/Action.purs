@@ -8,17 +8,15 @@ module Redux.Action
   , getState
   ) where
 
-import Prelude (Unit, pure, bind)
-
+import Control.Monad.Aff (Canceler, Aff, launchAff)
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Exception (EXCEPTION)
-import Control.Monad.Aff (Aff, launchAff)
 import Control.Monad.Reader.Trans (ReaderT, ask, reader, runReaderT)
-
 import Data.Foreign (Foreign)
-import Data.Function (Fn0, runFn0)
+import Data.Function.Uncurried (Fn0, runFn0)
 import Data.Tuple (Tuple(Tuple))
+import Prelude (Unit, pure, bind)
 
 foreign import data DISPATCH :: !
 
@@ -38,7 +36,7 @@ action a = Action { "type": a }
 
 foreign import makeAsyncAction
   :: forall a eff.
-     (Dispatcher a -> Fn0 State -> Eff eff Unit)
+     (Dispatcher a -> Fn0 State -> Eff (err :: EXCEPTION | eff) (Canceler eff))
   -> Eff eff Unit
 
 -- | Construct an asynchronous Redux action.
@@ -47,10 +45,7 @@ foreign import makeAsyncAction
 -- | actions based on the result.
 -- |
 -- | This method depends on `redux-thunk` middleware.
-asyncAction
-  :: forall a r.
-     AsyncAction a (dispatch :: DISPATCH | r) Unit
-  -> Eff (dispatch :: DISPATCH, err :: EXCEPTION | r) Unit
+asyncAction :: forall a r. AsyncAction a r (Canceler r) -> Eff r Unit
 asyncAction a =
   makeAsyncAction
   \dispatch' getState' ->

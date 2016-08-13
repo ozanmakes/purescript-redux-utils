@@ -1,0 +1,38 @@
+{
+  "name": "purescript-redux-utils",
+  "version": "1.0.0",
+  "description": "Utilities for writing Redux actions and reducers in PureScript",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "npm run build:ps",
+    "build:ps": "pulp build",
+    "build:json": "pulp build --include test --no-psa --json-errors",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkonkle/purescript-redux-utils.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "purescript"
+  ],
+  "author": "Ozan Sener <ozan@ozansener.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bkonkle/purescript-redux-utils/issues"
+  },
+  "homepage": "https://github.com/bkonkle/purescript-redux-utils#readme",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "pscid": "^1.11.0",
+    "pulp": "^9.0.1",
+    "purescript": "^0.9.3",
+    "purescript-psa": "^0.3.9",
+    "standard": "^7.1.2"
+  }
+}
