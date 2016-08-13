@@ -2,7 +2,7 @@
   "name": "purescript-redux-utils",
   "homepage": "https://github.com/osener/purescript-redux-utils",
   "description": "Utilities for writing Redux actions and reducers in PureScript",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "authors": [
     "Ozan Sener <ozan@ozansener.com>"
   ],
